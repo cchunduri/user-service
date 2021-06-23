@@ -16,7 +16,7 @@ public class UserCriteriaService {
     @Inject
     HibernateUtils<AppUser> hibernateUtils;
 
-    public List<AppUser> findUserBy(String field, String value) {
+    public List<AppUser> findUserBy(String field, Object value) {
         return hibernateUtils.select(AppUser.class, field, value);
     }
 }

@@ -1,8 +1,8 @@
 package com.chaitu.entities;
 
-import com.chaitu.dto.AppUserDto;
+import com.chaitu.dto.appuser.AppUserDto;
+import io.quarkus.elytron.security.common.BcryptUtil;
 import lombok.*;
-import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
@@ -44,7 +44,7 @@ public class AppUser {
                 .firstName(appUserDto.firstName())
                 .lastName(appUserDto.lastName())
                 .email(appUserDto.email())
-                .password(appUserDto.password())
+                .password(BcryptUtil.bcryptHash(appUserDto.password()))
                 .phoneNumber(appUserDto.phoneNumber())
                 .phoneNumberExt(appUserDto.phoneNumberExt())
                 .build();

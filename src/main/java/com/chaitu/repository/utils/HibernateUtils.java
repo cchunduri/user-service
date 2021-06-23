@@ -35,7 +35,7 @@ public class HibernateUtils<T> {
                 .createQuery(className);
     }
 
-    public List<T> select(Class<T> className, String fieldName, String value) {
+    public List<T> select(Class<T> className, String fieldName, Object value) {
         var criteriaBuilder = getCriteriaBuilder(className);
         var criteriaQuery = getCriteriaQuery(criteriaBuilder, className);
         var rootObject = criteriaQuery.from(className);

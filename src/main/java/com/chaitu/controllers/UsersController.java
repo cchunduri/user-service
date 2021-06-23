@@ -1,8 +1,9 @@
 package com.chaitu.controllers;
 
-import com.chaitu.dto.AppUserDto;
+import com.chaitu.dto.appuser.AppUserDto;
 import com.chaitu.services.UsersService;
 
+import javax.enterprise.inject.Any;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -15,10 +16,9 @@ import javax.ws.rs.core.UriInfo;
 @Path("/user")
 public class UsersController {
 
-    @Context
-    private UriInfo uriInfo;
+    @Context UriInfo uriInfo;
 
-    @Inject
+    @Inject @Any
     UsersService usersService;
 
     @POST

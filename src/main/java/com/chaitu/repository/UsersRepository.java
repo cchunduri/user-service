@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 import static com.chaitu.constants.AppConstants.EMAIL;
+import static com.chaitu.constants.AppConstants.PHONE_NUMBER;
 
 @ApplicationScoped
 public class UsersRepository {
@@ -21,11 +22,16 @@ public class UsersRepository {
     UserCriteriaService userCriteriaService;
 
     @Transactional
-    public void createUser(AppUser appUser) {
+    public AppUser createUser(AppUser appUser) {
         entityManager.persist(appUser);
+        return appUser;
     }
 
     public List<AppUser> findByEmail(String email) {
         return userCriteriaService.findUserBy(EMAIL, email);
+    }
+
+    public List<AppUser> findByPhoneNumber(Long phoneNumber) {
+        return userCriteriaService.findUserBy(PHONE_NUMBER, phoneNumber);
     }
 }
